@@ -27,13 +27,58 @@
 </div>
 <br>
 <!-- Cart -->
-<button style="margin-left: 50px">
+<button style="margin-left: 50px" id="btnCart" type="button" class="btn btn-warning mb-3 text-white" data-toggle="modal"
+    data-target="#exampleModal" onclick="getProductInJSON()">
     <i class="fa fa-cart-plus" style="font-size: 2rem;"></i>
 </button>
+<!-- 
+    <button id="btnThem" type="button" class="btn btn-warning mb-3 text-white" data-toggle="modal" data-target="#exampleModal">
+            Thêm Món Ăn
+          </button>
+ -->
 <!-- Content when you loading... -->
 <div class="" ; style="margin: 50px 0px 0px 50px;">
     <div class="card-columns">
         <div id="showInfo"></div>
+    </div>
+</div>
+<!--  -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 800px !important;">
+        <div class="modal-content">
+            <!--  -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">CART</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!--  -->
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-sm">
+                        <thead>
+                            <tr>
+                                <th>Number</th>
+                                <th>Picture</th>
+                                <th>Name product</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody id="showCart">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!--  -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-warning" id="btnMua" onclick="btnMua()">Purchase</button>
+                <button type="button" class="btn btn-warning" id="btnXoa" onclick="btnXoa()">Clear Cart</button>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -60,6 +105,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="../services/services.js"></script>
     <script src="../controllers/main.js"></script>
+    <script src="../models/itemCartBC34.js"></script>
     <script src="../models/productBC34.js"></script>
     <!-- Thứ tự của các src cũng rất quan trọng nhen, vì đây là HTML -->
 </body>
