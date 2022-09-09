@@ -1,4 +1,6 @@
 // ----------------------------------------------------------------------------------------------------
+var cartLocal = JSON.parse(localStorage.getItem("productListBC34"));
+
 const fetchData = async () => {
   try {
     const getProduct = await axios({
@@ -61,7 +63,6 @@ function changeUI() {
   });
 }
 // ----------------------------------------------------------------------------------------------------
-var cartLocal = [];
 function getProductInJSON() {
   let cartLocalS = JSON.parse(localStorage.getItem("productListBC34"));
   let contentR = "";
@@ -199,6 +200,7 @@ function increaseP(id) {
     if (idProduct === idParse) {
       cartLocal[i].quantity++;
     }
+    console.log(cartLocal)
   }
   saveData(cartLocal);
   function Re_renderCart(cartLocal) {
@@ -355,3 +357,4 @@ function btnXoa() {
 let saveData = (data) => {
   localStorage.setItem("productListBC34", JSON.stringify(data));
 };
+
