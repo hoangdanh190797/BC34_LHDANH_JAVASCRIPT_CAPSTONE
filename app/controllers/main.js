@@ -61,13 +61,9 @@ function changeUI() {
   });
 }
 // ----------------------------------------------------------------------------------------------------
-var cartLocal = []; //GIỞ HÀNG Ở ĐÂY
-//
-// saveData(cartLocal);
+var cartLocal = [];
 function getProductInJSON() {
-  // console.log("1");
   let cartLocalS = JSON.parse(localStorage.getItem("productListBC34"));
-
   let contentR = "";
   for (var i = 0; i < cartLocalS.length; i++) {
     let product = cartLocalS[i];
@@ -98,7 +94,7 @@ function getProductInJSON() {
   }
   document.getElementById("showCart").innerHTML = contentR;
 }
-
+// ----------------------------------------------------------------------------------------------------
 function addProductCart(id) {
   const getItemwithID = async (id) => {
     try {
@@ -119,14 +115,8 @@ function addProductCart(id) {
     } else {
       cartLocal[index].quantity++;
     }
-    //
     saveData(cartLocal);
-
     function renderCart(cartLocal) {
-      // let getListProductExtra = JSON.parse(
-      //   localStorage.getItem("productListBC34")
-      // );
-      // let totalArr = [...totalArr, getListProductExtra, cartLocal];
       let contentR = "";
       for (var i = 0; i < cartLocal.length; i++) {
         let product = cartLocal[i];
@@ -160,22 +150,15 @@ function addProductCart(id) {
     renderCart(cartLocal);
     console.log(cartLocal);
   });
-  // let cartLocalS = JSON.parse(localStorage.getItem("productListBC34"));
-  //   renderCart(cartLocalS);
 }
-function remove(id){
+// ----------------------------------------------------------------------------------------------------
+function remove(id) {
   let idProduct = id;
   for (var i = 0; i <= cartLocal.length; i++) {
     let idProductInArr = cartLocal[i]?.id;
     let idParse = Number(idProductInArr);
     if (idProduct === idParse) {
-      // console.log();
       cartLocal.splice(cartLocal[i]);
-      // let ttquantity = cartLocal[i].quantity;
-      // let total = ttquantity * cartLocal[i].price;
-      // console.log(total);
-      // cartLocal[i].price=total;
-      //Từ từ đang gấp quá => SAI nè!
     }
   }
   saveData(cartLocal);
@@ -212,21 +195,15 @@ function remove(id){
     document.getElementById("showCart").innerHTML = contentR;
   }
   Re_renderCart(cartLocal);
-  // saveData(cartLocal);
 }
+// ----------------------------------------------------------------------------------------------------
 function increaseP(id) {
   let idProduct = id;
   for (var i = 0; i <= cartLocal.length; i++) {
     let idProductInArr = cartLocal[i]?.id;
     let idParse = Number(idProductInArr);
     if (idProduct === idParse) {
-      // console.log();
       cartLocal[i].quantity++;
-      // let ttquantity = cartLocal[i].quantity;
-      // let total = ttquantity * cartLocal[i].price;
-      // console.log(total);
-      // cartLocal[i].price=total;
-      //Từ từ đang gấp quá => SAI nè!
     }
   }
   saveData(cartLocal);
@@ -265,7 +242,7 @@ function increaseP(id) {
   Re_renderCart(cartLocal);
   // saveData(cartLocal);
 }
-
+// ----------------------------------------------------------------------------------------------------
 function decreaseP(id) {
   let idProduct = id;
   for (var i = 0; i <= cartLocal.length; i++) {
@@ -273,10 +250,6 @@ function decreaseP(id) {
     let idParse = Number(idProductInArr);
     if (idProduct === idParse) {
       cartLocal[i].quantity--;
-      // console.log(cartLocal[i].quantity);
-      // let total = cartLocal[i].quantity * cartLocal[i].price;
-      // console.log(total);
-      // cartLocal[i].price=total;
     }
   }
   saveData(cartLocal);
@@ -313,8 +286,8 @@ function decreaseP(id) {
     document.getElementById("showCart").innerHTML = contentR;
   }
   Re_renderCart(cartLocal);
-  // saveData(cartLocal);
 }
+// ----------------------------------------------------------------------------------------------------
 function btnMua() {
   cartLocal = [];
   saveData(cartLocal);
@@ -349,7 +322,7 @@ function btnMua() {
   }
   document.getElementById("showCart").innerHTML = contentR;
 }
-
+// ----------------------------------------------------------------------------------------------------
 function btnXoa() {
   cartLocal = [];
   saveData(cartLocal);
@@ -384,9 +357,7 @@ function btnXoa() {
   }
   document.getElementById("showCart").innerHTML = contentR;
 }
-
+// ----------------------------------------------------------------------------------------------------
 let saveData = (data) => {
   localStorage.setItem("productListBC34", JSON.stringify(data));
 };
-
-// window.onload = showData();
