@@ -154,13 +154,7 @@ function addProductCart(id) {
 // ----------------------------------------------------------------------------------------------------
 function remove(id) {
   let idProduct = id;
-  for (var i = 0; i <= cartLocal.length; i++) {
-    let idProductInArr = cartLocal[i]?.id;
-    let idParse = Number(idProductInArr);
-    if (idProduct === idParse) {
-      cartLocal.splice(cartLocal[i]);
-    }
-  }
+  cartLocal = cartLocal.filter((item) => item.id != idProduct)
   saveData(cartLocal);
   function Re_renderCart(cartLocal) {
     let contentR = "";
